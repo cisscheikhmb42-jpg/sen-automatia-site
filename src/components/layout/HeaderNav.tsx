@@ -15,8 +15,11 @@ export function HeaderNav({ logo }: { logo: ReactNode }) {
   // Empêche le défilement de la page quand le menu mobile est ouvert
   useEffect(() => {
     document.body.style.overflow = ouvert ? "hidden" : "";
+    // Masque le bouton WhatsApp flottant pour ne pas cacher le menu
+    document.body.toggleAttribute("data-menu-ouvert", ouvert);
     return () => {
       document.body.style.overflow = "";
+      document.body.removeAttribute("data-menu-ouvert");
     };
   }, [ouvert]);
 
@@ -24,6 +27,7 @@ export function HeaderNav({ logo }: { logo: ReactNode }) {
   const liens = navigation.filter((l) => l.href !== "/contact");
 
   return (
+    <>
     <header className="sticky top-0 z-40 border-b border-encre/5 bg-white/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:h-18 sm:px-6">
         <Link href="/" aria-label="Sen AutomatIA – Accueil" className="flex-none">
@@ -69,18 +73,22 @@ export function HeaderNav({ logo }: { logo: ReactNode }) {
           </button>
         </div>
       </div>
+    </header>
 
+      {/* Menu mobile placé hors de l'en-tête : le flou de l'en-tête
+          enfermerait sinon le menu dans une bande de 64 px */}
       {ouvert && (
         <nav
           id="menu-mobile"
           aria-label="Navigation mobile"
-          className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-white px-4 pb-10 pt-4 lg:hidden"
+          className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto bg-white px-4 pb-24 pt-4 lg:hidden"
         >
           <ul className="space-y-1">
             {navigation.map((l) => (
               <li key={l.href}>
                 <Link
                   href={l.href}
+                  onClick={() => setOuvert(false)}
                   aria-current={actif(l.href) ? "page" : undefined}
                   className={`block rounded-2xl px-4 py-3.5 text-lg font-medium ${
                     actif(l.href) ? "bg-brume text-bleu" : "text-encre"
@@ -93,12 +101,13 @@ export function HeaderNav({ logo }: { logo: ReactNode }) {
           </ul>
           <Link
             href="/contact"
+            onClick={() => setOuvert(false)}
             className="bg-degrade mt-6 flex min-h-12 items-center justify-center rounded-full px-6 py-3 font-semibold text-white"
           >
             Demander mon audit gratuit
           </Link>
         </nav>
       )}
-    </header>
+    </>
   );
 }
