@@ -20,7 +20,7 @@ export function Footer() {
     <footer className="bg-nuit px-4 pb-28 pt-14 text-white sm:px-6 sm:pb-12">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <Logo variante="fondSombre" className="h-11 w-auto" />
+          <Logo variante="fondSombre" className="h-14 w-auto" />
           <p className="mt-4 font-titre text-lg font-semibold texte-degrade">{site.slogan}</p>
           <p className="mt-3 max-w-sm text-white/65">
             Marketing digital et solutions d&apos;intelligence artificielle pour les PME et les

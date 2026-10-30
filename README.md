@@ -18,13 +18,14 @@ Next.js 15 (App Router) + Tailwind CSS 4, déployable sur Vercel.
 
 ## Images
 
-- **Logos** → `public/logo/` :
-  `logo-sen-automatia-transparent.svg` (en-tête),
-  `logo-sen-automatia-fond-sombre.svg` (pied de page),
-  `logo-sen-automatia-fond-clair.svg`,
+- **Logos** → `public/logo/` (format `.svg`, `.png`, `.webp` ou `.jpg`) :
+  `logo-sen-automatia-transparent` (en-tête),
+  `logo-sen-automatia-fond-sombre` (pied de page),
+  `logo-sen-automatia-fond-clair`,
   `symbole-sen-automatia.png` (favicon).
   Tant qu'un logo manque, le nom « Sen AutomatIA » s'affiche en texte.
-- **Photo du fondateur** → `public/images/cheikh-mbacke-cisse.jpg`.
+- **Photo du fondateur** → `public/images/cheikh-mbacke-cisse.jpg` (ou `.png`, `.webp`).
+  Le nom du fichier doit être exactement `cheikh-mbacke-cisse`.
   Tant qu'elle manque, un cadre provisoire s'affiche sur la page À propos.
 
 Les images sont détectées au moment de la construction du site : après en avoir

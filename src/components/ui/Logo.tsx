@@ -1,5 +1,5 @@
 import { site } from "@/config/site";
-import { publicFileExists } from "@/lib/public-file";
+import { findPublicFile } from "@/lib/public-file";
 
 type Props = {
   variante?: "entete" | "fondSombre" | "fondClair";
@@ -11,9 +11,9 @@ type Props = {
  * copié, affiche le nom de la marque en texte (aucune image cassée).
  */
 export function Logo({ variante = "entete", className = "h-10 w-auto" }: Props) {
-  const src = site.logos[variante];
+  const src = findPublicFile(site.logos[variante], ["svg", "png", "webp", "jpg"]);
 
-  if (publicFileExists(src)) {
+  if (src) {
     // eslint-disable-next-line @next/next/no-img-element
     return <img src={src} alt={site.nom} className={className} />;
   }

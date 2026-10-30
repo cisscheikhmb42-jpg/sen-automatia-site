@@ -33,7 +33,8 @@ export const site = {
   fondateur: {
     nom: "Cheikh Mbacké Cissé",
     role: "Fondateur",
-    photo: "/images/cheikh-mbacke-cisse.jpg",
+    // Fichier public/images/cheikh-mbacke-cisse (.jpg, .jpeg, .png ou .webp)
+    photo: "/images/cheikh-mbacke-cisse",
   },
 
   // Laisser une chaîne vide pour masquer un réseau
@@ -55,12 +56,14 @@ export const site = {
     hebergeur: "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis – vercel.com",
   },
 
+  // Fichiers dans public/logo/ (extension .svg, .png, .webp ou .jpg acceptée)
   logos: {
-    entete: "/logo/logo-sen-automatia-transparent.svg",
-    fondSombre: "/logo/logo-sen-automatia-fond-sombre.svg",
-    fondClair: "/logo/logo-sen-automatia-fond-clair.svg",
-    symbole: "/logo/symbole-sen-automatia.png",
+    entete: "/logo/logo-sen-automatia-transparent",
+    fondSombre: "/logo/logo-sen-automatia-fond-sombre",
+    fondClair: "/logo/logo-sen-automatia-fond-clair",
   },
+  // Favicon (icône de l'onglet)
+  favicon: "/logo/symbole-sen-automatia.png",
 } as const;
 
 export const navigation = [

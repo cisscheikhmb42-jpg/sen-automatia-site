@@ -14,3 +14,18 @@ export function publicFileExists(publicPath: string) {
     return false;
   }
 }
+
+/**
+ * Cherche un fichier dans /public quelle que soit son extension.
+ * Ex. findPublicFile("/images/photo", ["jpg", "png"]) → "/images/photo.png"
+ * ou null si aucun fichier ne correspond. Les majuscules (.PNG) sont acceptées.
+ */
+export function findPublicFile(cheminSansExtension: string, extensions: readonly string[]) {
+  for (const ext of extensions) {
+    for (const variante of [ext.toLowerCase(), ext.toUpperCase()]) {
+      const chemin = `${cheminSansExtension}.${variante}`;
+      if (publicFileExists(chemin)) return chemin;
+    }
+  }
+  return null;
+}

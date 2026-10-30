@@ -1,13 +1,14 @@
 import Image from "next/image";
 import { site } from "@/config/site";
-import { publicFileExists } from "@/lib/public-file";
+import { findPublicFile } from "@/lib/public-file";
 
 /**
- * Photo du fondateur (public/images/cheikh-mbacke-cisse.jpg).
+ * Photo du fondateur (public/images/cheikh-mbacke-cisse.jpg, .png ou .webp).
  * Tant que le fichier n'existe pas, un cadre provisoire s'affiche à la place.
  */
 export function FounderPhoto() {
-  const { photo, nom } = site.fondateur;
+  const { nom } = site.fondateur;
+  const photo = findPublicFile(site.fondateur.photo, ["jpg", "jpeg", "png", "webp"]);
   const initiales = nom
     .split(" ")
     .map((m) => m[0])
@@ -17,7 +18,7 @@ export function FounderPhoto() {
   return (
     <div className="bg-degrade relative mx-auto aspect-[4/5] w-full max-w-sm rounded-[2rem] p-1.5 shadow-2xl shadow-violet/20">
       <div className="relative h-full w-full overflow-hidden rounded-[1.6rem] bg-nuit">
-        {publicFileExists(photo) ? (
+        {photo ? (
           <Image
             src={photo}
             alt={`${nom}, ${site.fondateur.role.toLowerCase()} de ${site.nom}`}

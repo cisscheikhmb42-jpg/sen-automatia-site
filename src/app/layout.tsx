@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "boutique en ligne Sénégal",
     "gestion réseaux sociaux",
   ],
-  icons: { icon: site.logos.symbole, apple: site.logos.symbole },
+  icons: { icon: site.favicon, apple: site.favicon },
   openGraph: {
     siteName: site.nom,
     locale: "fr_SN",
